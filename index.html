@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wspólna droga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="hero">
+    <img src="images/start.jpg" class="photo">
+    
+    <div class="content">
+        <h1>Monika i Michał</h1>
+        <p class="date">
+    Od 14.02.2020 zaczęła się nasza wspólna historia ❤️
+</p>
+
+        <p>
+            Najpiękniejsze lata spędzone z najcudowniejszą dziewczyną, jaką
+ miałem szczęście poznać
+        </p>
+
+        <button onclick="document.querySelector('.final-section').scrollIntoView({ behavior: 'smooth' })">
+    Otwórz wspomnienia
+</button>
+    </div>
+</section>
+<section class="story">
+    <div class="story-content">
+        <h2>Jak wszystko się zaczęło 🎓</h2>
+       
+        <img src="images/studia.jpg" class="story-photo">
+
+<h2>Od tego wszystko się zaczęło</h2>
+
+<p>
+    Poznaliśmy się na studiach.
+    Od początku coś w Tobie przyciągało mój wzrok.
+    Chyba można powiedzieć, że byłaś dla mnie miłością
+    od pierwszego wejrzenia.
+</p>
+
+<p>
+    Zaczęło się od wspólnych wypadów na rowery,
+    spacerów po bulwarach w Rzeszowie i długich rozmów
+    na Messengerze, Instagramie i Snapchacie.
+</p>
+
+<p>
+    Z czasem zaczęliśmy robić razem właściwie wszystko.
+    Siłownia, rower, squash, bilard, badminton...
+    Tych wspólnych rzeczy było tak wiele,
+    że dzisiaj trudno je wszystkie wymienić.
+</p>
+
+<p>
+    Pamiętam nasze pierwsze rowerowe wypady.
+    Nie miałaś wtedy swojego roweru, więc dawałem Ci swój,
+    a sam jeździłem obok Ciebie na rolkach.
+    Niby zwykła chwila, a dzisiaj jest jednym
+    z tych wspomnień, do których chciałbym móc wrócić.
+</p>
+
+    </div>
+</section>
+<section class="memories">
+    <div class="memories-content">
+
+      
+
+    </div>
+</section>
+<section class="timeline">
+
+</section>
+<section class="places">
+
+    
+
+</section>
+<section class="passions">
+
+</section>
+<section class="daily">
+<div class="secret-message">
+
+    <section class="final-section">
+
+    <div class="final-content">
+
+        <h2>Nasza historia ❤️</h2>
+
+        <p class="final-subtitle">
+            Wszystkie nasze małe i wielkie wspomnienia
+        </p>
+
+        <div class="story-categories">
+
+           <div class="story-category"
+                onclick="openVacations()">
+                <h3>🌴 Wakacje</h3>
+                <p>Nasze wspólne wyjazdy</p>
+            </div>
+
+            <div class="story-category"
+                 onclick="openMountains()">
+                <h3>⛰️ Góry</h3>
+                <p>Drogi, widoki i wspomnienia</p>
+            </div>
+
+            <div class="story-category">
+                <h3>❤️ Wspólna pasja</h3>
+                <p>To, co lubiliśmy robić razem</p>
+            </div>
+
+            <div class="story-category">
+                <h3>🏠 Wspólne życie</h3>
+                <p>Nasza codzienność</p>
+            </div>
+
+            <div class="story-category" 
+                onclick="openVideos()">
+            <h3>🎬 Filmy</h3>
+            <p>Nasze filmowe wspomnienia</p>
+            </div>
+
+            <div class="story-category">
+                <h3>👨 Michał</h3>
+                <p>Moje wspomnienia</p>
+            </div>
+
+            <div class="story-category" onclick="openMonika()">
+    <h3>👩 Monika</h3>
+    <p>Jej uśmiech i najpiękniejsze chwile</p>
+    </div>
+
+            <div class="story-category"
+     onclick="document.getElementById('togetherModal').classList.add('active')">
+
+    <h3>❤️ Razem</h3>
+    <p>Nasze najlepsze wspólne zdjęcia</p>
+
+</div>
+
+        </div>
+
+        <div class="secret-area">
+
+            <button onclick="openSecret()" class="secret-button">
+                💌
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+<div id="secretModal" class="memory-modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeSecret()">×</button>
+
+        <h2>❤️ Dla Moniki</h2>
+
+        <p>
+            Od 14.02.2020 zaczęła się nasza wspólna historia.
+            I choć minęło już tyle czasu, nadal cieszę się,
+            że właśnie Ciebie spotkałem.
+        </p>
+
+        <p>
+            Dziękuję Ci za wszystkie wspólne chwile,
+            za śmiech, podróże, zwykłe dni i za to,
+            że jesteś obok. 
+        </p>
+
+       
+
+    </div>
+
+</div>
+</section>
+<div id="musicBox">
+
+<audio id="music"></audio>
+
+<button onclick="toggleMusic()" id="musicButton">
+🎵
+</button>
+
+</div>
+
+
+<script>
+
+const songs = [
+"music/perfect.mp3",
+"music/perfect1.mp3",
+"music/perfect2.mp3",
+"music/perfect3.mp3",
+"music/perfect4.mp3"
+];
+
+let currentSong = 0;
+let playing = false;
+
+const music = document.getElementById("music");
+const button = document.getElementById("musicButton");
+
+music.src = songs[currentSong];
+
+function toggleMusic(){
+
+    if(playing){
+        music.pause();
+        button.innerHTML="▶";
+        playing=false;
+    }else{
+        music.play();
+        button.innerHTML="⏸️";
+        playing=true;
+    }
+
+}
+
+music.addEventListener("ended",function(){
+
+    currentSong++;
+
+    if(currentSong>=songs.length){
+        currentSong=0;
+    }
+
+    music.src=songs[currentSong];
+    music.play();
+
+});
+
+</script>
+
+<div id="mountainsModal" class="memory-modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeMountains()">×</button>
+
+        <h2>⛰️ Nasze góry</h2>
+
+        <p class="modal-subtitle">
+            Wspólne drogi, widoki i wspomnienia
+        </p>
+<div class="mountains-story"> 
+    <p> 
+        Góry zawsze były czymś, co kochaliśmy razem.
+        Co roku w Walentynki wybieraliśmy się właśnie tam,
+        żeby zdobywać kolejne szczyty i spędzać ten czas tylko we dwoje. 
+    </p>
+     <p> 
+        Pamiętam te wszystkie drogi, zmęczenie, widoki i momenty, 
+        kiedy po prostu szliśmy obok siebie. Dzisiaj wiem, że nie chodziło 
+        nawet o to, jaki szczyt udało nam się zdobyć. 
+        Najważniejsze było to, że zdobywaliśmy go razem. 
+    </p> 
+</div>
+
+        <div class="mountains-gallery">
+    <img src="images/góry/gory1.jpg" alt="Nasze góry">
+    <img src="images/góry/gory2.jpg" alt="Nasze góry">
+    <img src="images/góry/gory3.jpg" alt="Nasze góry">
+    <img src="images/góry/gory4.jpg" alt="Nasze góry">
+    <img src="images/góry/gory5.jpg" alt="Nasze góry">
+    <img src="images/góry/gory6.jpg" alt="Nasze góry">
+    <img src="images/góry/gory7.jpg" alt="Nasze góry">
+    <img src="images/góry/gory8.jpg" alt="Nasze góry">
+    <img src="images/góry/gory9.jpg" alt="Nasze góry">
+    <img src="images/góry/gory10.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory11.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory12.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory13.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory14.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory15.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory16.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory17.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory18.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory19.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory20.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory21.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory22.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory23.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory24.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory25.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory26.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory27.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory28.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory29.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory30.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory31.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory32.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory33.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory34.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory35.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory36.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory37.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory38.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory39.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory40.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory41.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory42.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory43.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory44.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory45.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory46.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory47.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory48.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory49.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory50.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory51.jpeg" alt="Nasze góry">
+    <img src="images/góry/gory52.jpeg" alt="Nasze góry">
+</div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openVacations() {
+    document.getElementById("vacationsModal").classList.add("active");
+}
+
+function closeVacations() {
+    document.getElementById("vacationsModal").classList.remove("active");
+}
+
+function openMonika() {
+    document.getElementById("monikaModal").classList.add("active");
+}
+
+function closeMonika() {
+    document.getElementById("monikaModal").classList.remove("active");
+}
+
+function openMountains() {
+    document.getElementById("mountainsModal").classList.add("active");
+}
+
+function closeMountains() {
+    document.getElementById("mountainsModal").classList.remove("active");
+}
+
+</script>
+<div id="vacationsModal" class="memory-modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeVacations()">×</button>
+
+        <h2>🌴 Nasze wakacje</h2>
+
+        <p class="modal-subtitle">
+            Miejsca, które zobaczyliśmy razem ❤️
+        </p>
+<p class="modal-text">
+    Nasze pierwsze wakacje w Bułgarii.
+</p>
+
+<p class="modal-text">
+    Do dzisiaj nie wiem, dlaczego właśnie ten wyjazd
+    tak mocno zapadł mi w pamięć. Może dlatego,
+    że nie potrzebowaliśmy wtedy wiele.
+</p>
+
+<p class="modal-text">
+    To był jeden z najtańszych wyjazdów,
+    hotel był bardzo skromny, ale miał basen.
+    I chyba właśnie wtedy najbardziej poczułem,
+    że nieważne jest miejsce ani to, ile mamy.
+    Byłaś Ty, byłem ja i byliśmy razem.
+    To naprawdę wystarczało.
+</p>
+
+<p class="modal-text">
+    Czasami graliśmy w karty, odpoczywaliśmy,
+    rozmawialiśmy i po prostu cieszyliśmy się tym,
+    że jesteśmy obok siebie.
+</p>
+
+        <div class="vacations-gallery">
+
+            <img src="images/wakacje/wakacje.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje1.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje2.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje3.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje4.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje5.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje6.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje7.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje8.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje9.jpg" alt="Wakacje">
+            <img src="images/wakacje/wakacje10.jpg" alt="Wakacje">
+
+</div>
+
+    </div>
+
+</div>
+<script>
+function openVacations() {
+    const modal = document.getElementById("vacationsModal");
+
+    if (!modal) {
+        alert("BRAK vacationsModal!");
+        return;
+    }
+
+    modal.classList.add("active");
+}
+
+function closeVacations() {
+    const modal = document.getElementById("vacationsModal");
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
+}
+
+function openMountains() {
+    const modal = document.getElementById("mountainsModal");
+
+    if (modal) {
+        modal.classList.add("active");
+    }
+}
+
+function closeMountains() {
+    const modal = document.getElementById("mountainsModal");
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
+}
+
+function openSecret() {
+    const modal = document.getElementById("secretModal");
+
+    if (modal) {
+        modal.classList.add("active");
+    }
+}
+
+function closeSecret() {
+    const modal = document.getElementById("secretModal");
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
+}
+
+function openPhotoViewer(image) {
+    const viewer = document.getElementById("photoViewer");
+    const viewerImage = document.getElementById("photoViewerImage");
+
+    if (viewer && viewerImage) {
+        viewerImage.src = image.src;
+        viewer.style.display = "flex";
+    }
+}
+
+function closePhotoViewer() {
+    const viewer = document.getElementById("photoViewer");
+
+    if (viewer) {
+        viewer.style.display = "none";
+    }
+}
+
+
+/* ❤️ LATAJĄCE SERDUSZKA */
+
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = Math.random() > 0.25 ? "♥" : "♡";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (25 + Math.random() * 45) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function () {
+        heart.remove();
+    }, 11000);
+}
+
+setInterval(createHeart, 250);
+</script>
+<div id="videosModal" class="memory-modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeVideos()">×</button>
+
+        <h2>🎬 Nasze filmy</h2>
+
+        <p class="modal-subtitle">
+            Chwile, które udało nam się zatrzymać ❤️
+        </p>
+
+        <div class="videos-gallery">
+
+            <video controls preload="metadata">
+                <source src="videos/film1.mp4" type="video/mp4">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film2.mp4" type="video/mp4">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film3.mp4" type="video/mp4">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film4.mp4" type="video/mp4">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film5.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+<video controls preload="metadata">
+                <source src="videos/film16.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film7.mp4" type="video/mp4">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film8.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film9.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film10.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video><video controls preload="metadata">
+                <source src="videos/film11.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film12.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film13.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film14.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+
+            <video controls preload="metadata">
+                <source src="videos/film15.MOV" type="video/quicktime">
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+            </video>
+        </div>
+
+    </div>
+<script>
+function openVideos() {
+    const modal = document.getElementById("videosModal");
+
+    if (modal) {
+        modal.classList.add("active");
+    } else {
+        alert("BRAK videosModal");
+    }
+}
+
+function closeVideos() {
+    const modal = document.getElementById("videosModal");
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
+}
+<div id="togetherModal" class="memory-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeTogether()">×</button>
+
+        <h2>❤️ Razem</h2>
+
+        <p class="modal-subtitle">
+            Nasze najpiękniejsze wspólne chwile
+        </p>
+
+        <p>
+            Tutaj będą nasze wspólne zdjęcia i wspomnienia ❤️
+        </p>
+
+    </div>
+
+</div>
+function openTogether() {
+    const modal = document.getElementById("togetherModal");
+
+    if (modal) {
+        modal.classList.add("active");
+    }
+}
+
+function closeTogether() {
+    const modal = document.getElementById("togetherModal");
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
+}
+
+</script>
+<div class="modal" id="monikaModal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeMonika()">×</button>
+
+        <h2>👩 Monika ❤️</h2>
+
+        <p class="modal-subtitle">
+            Jej uśmiech i najpiękniejsze chwile
+        </p>
+
+        <div class="monika-gallery">
+
+            <img src="images/Monika/monika1.jpg" alt="Monika" onclick="openPhotoViewer(this)">
+            <img src="images/Monika/monika2.jpg" alt="Monika" onclick="openPhotoViewer(this)">
+            <img src="images/Monika/monika3.jpg" alt="Monika" onclick="openPhotoViewer(this)">
+            <img src="images/Monika/monika4.jpg" alt="Monika" onclick="openPhotoViewer(this)">
+            <img src="images/Monika/monika5.jpg" alt="Monika" onclick="openPhotoViewer(this)">
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
