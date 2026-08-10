@@ -25,14 +25,12 @@
 const modalIds=['secretModal','vacationsModal','mountainsModal','passionModal','lifeModal','videosModal','michalModal','monikaModal','togetherModal'];
 function closeAllModals(){modalIds.forEach(id=>{const m=document.getElementById(id);if(m)m.classList.remove('active')})}
 function openModal(id){closeAllModals();const m=document.getElementById(id);if(m)m.classList.add('active')}
-
-/* Wczytywanie zdjęć bez zgadywania nazw plików. GitHub zwraca prawdziwe nazwy, więc .jpg/.JPEG itd. działają. */
 const API='https://api.github.com/repos/MPAWEZKA98/wspolna-droga/contents/';
 async function loadGallery(id,path){
  const box=document.getElementById(id); if(!box)return;
  box.innerHTML='<p>Ładowanie zdjęć…</p>';
  try{
-  const r=await fetch(API+path); if(!r.ok)throw new Error('folder');
+  const r=await fetch(API+path.split('/').map(encodeURIComponent).join('/')); if(!r.ok)throw new Error('folder');
   const files=await r.json();
   const images=files.filter(f=>f.type==='file'&&/\.(jpe?g|png|webp|gif)$/i.test(f.name));
   box.innerHTML='';
@@ -40,25 +38,19 @@ async function loadGallery(id,path){
   if(!images.length)box.innerHTML='<p>Brak zdjęć w tym folderze ❤️</p>';
  }catch(e){box.innerHTML='<p>Nie udało się wczytać tego folderu.</p>';console.error(path,e)}
 }
-
 loadGallery('vacationsGallery','images/wakacje');
 loadGallery('mountainsGallery','images/gory');
 loadGallery('passionGallery','images/images/pasje');
 loadGallery('togetherGallery','images/razem');
-/* Te trzy galerie zostawiamy gotowe na moment, gdy dodasz odpowiednie foldery. */
 loadGallery('lifeGallery','images/zycie');
 loadGallery('michalGallery','images/Michal');
 loadGallery('monikaGallery','images/Monika');
-
 const videoNames=['film1.mp4','film2.mp4','film3.mp4','film4.mp4','film5.MOV','film16.MOV','film7.mp4','film8.MOV','film9.MOV','film10.MOV','film11.MOV','film12.MOV','film13.MOV','film14.MOV','film15.MOV'];
-const videoBox=document.getElementById('videosGallery');
-videoNames.forEach(name=>{const v=document.createElement('video');v.controls=true;v.preload='metadata';const s=document.createElement('source');s.src='videos/'+name;s.type=name.toLowerCase().endsWith('.mov')?'video/quicktime':'video/mp4';v.appendChild(s);videoBox.appendChild(v)});
-
+const videoBox=document.getElementById('videosGallery');videoNames.forEach(name=>{const v=document.createElement('video');v.controls=true;v.preload='metadata';const s=document.createElement('source');s.src='videos/'+name;s.type=name.toLowerCase().endsWith('.mov')?'video/quicktime':'video/mp4';v.appendChild(s);videoBox.appendChild(v)});
 const songs=['Perfect.mp3','Perfect1.mp3','Perfect2.mp3','Perfect3.mp3','Perfect4.mp3'];let currentSong=0;let playing=false;const music=document.getElementById('music');const musicButton=document.getElementById('musicButton');music.src=songs[0];
 function toggleMusic(){if(playing){music.pause();musicButton.innerHTML='▶';playing=false}else{music.play().then(()=>{musicButton.innerHTML='⏸️';playing=true}).catch(()=>{})}}
 music.addEventListener('ended',()=>{currentSong=(currentSong+1)%songs.length;music.src=songs[currentSong];music.play()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAllModals()});
-document.querySelectorAll('.memory-modal,.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeAllModals()}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAllModals()});document.querySelectorAll('.memory-modal,.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeAllModals()}));
 function createHeart(){const h=document.createElement('div');h.className='heart';h.innerHTML=Math.random()>.25?'♥':'♡';h.style.left=Math.random()*100+'vw';h.style.fontSize=25+Math.random()*45+'px';h.style.animationDuration=5+Math.random()*5+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),11000)}setInterval(createHeart,250);
 </script>
 </body>
