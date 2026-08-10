@@ -7,43 +7,10 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<section class="hero">
-<img src="images/start.jpg" class="photo" alt="Monika i Michał">
-<div class="content">
-<h1>Monika i Michał</h1>
-<p>Od 14.02.2020 zaczęła się nasza wspólna historia ❤️</p>
-<p>Najpiękniejsze lata spędzone z najcudowniejszą dziewczyną, jaką miałem szczęście poznać.</p>
-<button onclick="document.querySelector('.final-section').scrollIntoView({behavior:'smooth'})">Otwórz wspomnienia</button>
-</div>
-</section>
-<section class="story">
-<div class="story-content">
-<h2>Jak wszystko się zaczęło 🎓</h2>
-<img src="images/studia.jpg" class="story-photo" alt="Studia">
-<h2>Od tego wszystko się zaczęło</h2>
-<p>Poznaliśmy się na studiach. Od początku coś w Tobie przyciągało mój wzrok. Chyba można powiedzieć, że byłaś dla mnie miłością od pierwszego wejrzenia.</p>
-<p>Zaczęło się od wspólnych wypadów na rowery, spacerów po bulwarach w Rzeszowie i długich rozmów na Messengerze, Instagramie i Snapchacie.</p>
-<p>Z czasem zaczęliśmy robić razem właściwie wszystko. Siłownia, rower, squash, bilard, badminton...</p>
-<p>Pamiętam nasze pierwsze rowerowe wypady. Nie miałaś wtedy swojego roweru, więc dawałem Ci swój, a sam jeździłem obok Ciebie na rolkach.</p>
-</div>
-</section>
-<section class="final-section">
-<div class="final-content">
-<h2>Nasza historia ❤️</h2>
-<p class="final-subtitle">Wszystkie nasze małe i wielkie wspomnienia</p>
-<div class="story-categories">
-<div class="story-category" onclick="openModal('vacationsModal')"><h3>🌴 Wakacje</h3><p>Nasze wspólne wyjazdy</p></div>
-<div class="story-category" onclick="openModal('mountainsModal')"><h3>⛰️ Góry</h3><p>Drogi, widoki i wspomnienia</p></div>
-<div class="story-category" onclick="openModal('passionModal')"><h3>❤️ Wspólna pasja</h3><p>To, co lubiliśmy robić razem</p></div>
-<div class="story-category" onclick="openModal('lifeModal')"><h3>🏠 Wspólne życie</h3><p>Nasza codzienność</p></div>
-<div class="story-category" onclick="openModal('videosModal')"><h3>🎬 Filmy</h3><p>Nasze filmowe wspomnienia</p></div>
-<div class="story-category" onclick="openModal('michalModal')"><h3>👨 Michał</h3><p>Moje wspomnienia</p></div>
-<div class="story-category" onclick="openModal('monikaModal')"><h3>👩 Monika</h3><p>Jej uśmiech i najpiękniejsze chwile</p></div>
-<div class="story-category" onclick="openModal('togetherModal')"><h3>❤️ Razem</h3><p>Nasze najlepsze wspólne zdjęcia</p></div>
-</div>
-<div class="secret-area"><button class="secret-button" onclick="openModal('secretModal')">💌</button></div>
-</div>
-</section>
+<section class="hero"><img src="images/start.jpg" class="photo" alt="Monika i Michał"><div class="content"><h1>Monika i Michał</h1><p>Od 14.02.2020 zaczęła się nasza wspólna historia ❤️</p><p>Najpiękniejsze lata spędzone z najcudowniejszą dziewczyną, jaką miałem szczęście poznać.</p><button onclick="document.querySelector('.final-section').scrollIntoView({behavior:'smooth'})">Otwórz wspomnienia</button></div></section>
+<section class="story"><div class="story-content"><h2>Jak wszystko się zaczęło 🎓</h2><img src="images/studia.jpg" class="story-photo" alt="Studia"><h2>Od tego wszystko się zaczęło</h2><p>Poznaliśmy się na studiach. Od początku coś w Tobie przyciągało mój wzrok. Chyba można powiedzieć, że byłaś dla mnie miłością od pierwszego wejrzenia.</p><p>Zaczęło się od wspólnych wypadów na rowery, spacerów po bulwarach w Rzeszowie i długich rozmów na Messengerze, Instagramie i Snapchacie.</p><p>Z czasem zaczęliśmy robić razem właściwie wszystko. Siłownia, rower, squash, bilard, badminton...</p><p>Pamiętam nasze pierwsze rowerowe wypady. Nie miałaś wtedy swojego roweru, więc dawałem Ci swój, a sam jeździłem obok Ciebie na rolkach.</p></div></section>
+<section class="final-section"><div class="final-content"><h2>Nasza historia ❤️</h2><p class="final-subtitle">Wszystkie nasze małe i wielkie wspomnienia</p><div class="story-categories">
+<div class="story-category" onclick="openModal('vacationsModal')"><h3>🌴 Wakacje</h3><p>Nasze wspólne wyjazdy</p></div><div class="story-category" onclick="openModal('mountainsModal')"><h3>⛰️ Góry</h3><p>Drogi, widoki i wspomnienia</p></div><div class="story-category" onclick="openModal('passionModal')"><h3>❤️ Wspólna pasja</h3><p>To, co lubiliśmy robić razem</p></div><div class="story-category" onclick="openModal('lifeModal')"><h3>🏠 Wspólne życie</h3><p>Nasza codzienność</p></div><div class="story-category" onclick="openModal('videosModal')"><h3>🎬 Filmy</h3><p>Nasze filmowe wspomnienia</p></div><div class="story-category" onclick="openModal('michalModal')"><h3>👨 Michał</h3><p>Moje wspomnienia</p></div><div class="story-category" onclick="openModal('monikaModal')"><h3>👩 Monika</h3><p>Jej uśmiech i najpiękniejsze chwile</p></div><div class="story-category" onclick="openModal('togetherModal')"><h3>❤️ Razem</h3><p>Nasze najlepsze wspólne zdjęcia</p></div></div><div class="secret-area"><button class="secret-button" onclick="openModal('secretModal')">💌</button></div></div></section>
 <div id="secretModal" class="memory-modal"><div class="modal-content"><button class="close-modal" onclick="closeAllModals()">×</button><h2>❤️ Dla Moniki</h2><p>Od 14.02.2020 zaczęła się nasza wspólna historia.</p><p>Dziękuję za wszystkie wspólne chwile, śmiech, podróże i zwykłe dni.</p></div></div>
 <div id="vacationsModal" class="memory-modal"><div class="modal-content"><button class="close-modal" onclick="closeAllModals()">×</button><h2>🌴 Nasze wakacje</h2><p class="modal-subtitle">Miejsca, które zobaczyliśmy razem ❤️</p><p>Nasze pierwsze wakacje w Bułgarii. Nieważne było miejsce ani to, ile mieliśmy. Byłaś Ty, byłem ja i byliśmy razem.</p><div class="vacations-gallery" id="vacationsGallery"></div></div></div>
 <div id="mountainsModal" class="memory-modal"><div class="modal-content"><button class="close-modal" onclick="closeAllModals()">×</button><h2>⛰️ Nasze góry</h2><p class="modal-subtitle">Wspólne drogi, widoki i wspomnienia</p><div class="mountains-story"><p>Góry zawsze były czymś, co kochaliśmy razem. Co roku w Walentynki wybieraliśmy się właśnie tam, żeby zdobywać kolejne szczyty.</p><p>Najważniejsze było to, że zdobywaliśmy je razem. ❤️</p></div><div class="mountains-gallery" id="mountainsGallery"></div></div></div>
@@ -58,10 +25,21 @@
 const modalIds=['secretModal','vacationsModal','mountainsModal','passionModal','lifeModal','videosModal','michalModal','monikaModal','togetherModal'];
 function closeAllModals(){modalIds.forEach(id=>{const m=document.getElementById(id);if(m)m.classList.remove('active')})}
 function openModal(id){closeAllModals();const m=document.getElementById(id);if(m)m.classList.add('active')}
-function addImages(containerId,folder,names){const box=document.getElementById(containerId);if(!box)return;box.innerHTML='';names.forEach(name=>{const img=document.createElement('img');img.src=folder+'/'+name;img.alt='Wspomnienie';img.loading='lazy';box.appendChild(img)})}
-addImages('vacationsGallery','images/wakacje',['wakacje.jpg',...Array.from({length:10},(_,i)=>`wakacje${i+1}.jpg`)]);
-addImages('mountainsGallery','images/góry',['gory1.jpg','gory2.jpg','gory3.jpg','gory4.jpg','gory5.jpg','gory6.jpg','gory7.jpg','gory8.jpg','gory9.jpg',...Array.from({length:43},(_,i)=>`gory${i+10}.jpeg`)]);
-addImages('monikaGallery','images/Monika',['monika1.jpg','monika2.jpg','monika3.jpg','monika4.jpg','monika5.jpg']);
+
+/* Automatyczne pobieranie zdjęć z folderów repozytorium. */
+const repoApi='https://api.github.com/repos/MPAWEZKA98/wspolna-droga/contents/';
+const imageExtensions=['.jpg','.jpeg','.png','.webp','.gif'];
+function normalizeName(value){return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}
+async function findFolder(candidates){try{const response=await fetch(repoApi);if(!response.ok)return null;const files=await response.json();for(const candidate of candidates){const wanted=normalizeName(candidate);const found=files.find(x=>x.type==='dir'&&normalizeName(x.name)===wanted);if(found)return found.name}}catch(e){console.log(e)}return null}
+async function loadGallery(containerId,candidates){const box=document.getElementById(containerId);if(!box)return;box.innerHTML='<p>Ładowanie zdjęć…</p>';const folder=await findFolder(candidates);if(!folder){box.innerHTML='<p>Brak folderu ze zdjęciami ❤️</p>';return}try{const response=await fetch(repoApi+encodeURIComponent(folder));if(!response.ok)throw new Error();const files=await response.json();const images=files.filter(x=>x.type==='file'&&imageExtensions.some(ext=>x.name.toLowerCase().endsWith(ext)));box.innerHTML='';images.forEach(file=>{const img=document.createElement('img');img.src=file.download_url;img.alt='Wspomnienie';img.loading='lazy';box.appendChild(img)});if(!images.length)box.innerHTML='<p>Folder jest pusty ❤️</p>'}catch(e){box.innerHTML='<p>Nie udało się wczytać zdjęć.</p>'}}
+loadGallery('vacationsGallery',['wakacje','Wakacje']);
+loadGallery('mountainsGallery',['góry','Gory','gory','Góry']);
+loadGallery('passionGallery',['wspólna pasja','wspolna pasja','Wspólna pasja','wspolna-pasja']);
+loadGallery('lifeGallery',['wspólne życie','wspolne zycie','Wspólne życie','wspolne-zycie']);
+loadGallery('michalGallery',['Michał','Michal']);
+loadGallery('monikaGallery',['Monika','monika']);
+loadGallery('togetherGallery',['Razem','razem']);
+
 const videoNames=['film1.mp4','film2.mp4','film3.mp4','film4.mp4','film5.MOV','film16.MOV','film7.mp4','film8.MOV','film9.MOV','film10.MOV','film11.MOV','film12.MOV','film13.MOV','film14.MOV','film15.MOV'];
 const videoBox=document.getElementById('videosGallery');videoNames.forEach(name=>{const v=document.createElement('video');v.controls=true;v.preload='metadata';const s=document.createElement('source');s.src='videos/'+name;s.type=name.toLowerCase().endsWith('.mov')?'video/quicktime':'video/mp4';v.appendChild(s);videoBox.appendChild(v)});
 const songs=['Perfect.mp3','Perfect1.mp3','Perfect2.mp3','Perfect3.mp3','Perfect4.mp3'];let currentSong=0;let playing=false;const music=document.getElementById('music');const musicButton=document.getElementById('musicButton');music.src=songs[0];function toggleMusic(){if(playing){music.pause();musicButton.innerHTML='▶';playing=false}else{music.play();musicButton.innerHTML='⏸️';playing=true}}music.addEventListener('ended',()=>{currentSong=(currentSong+1)%songs.length;music.src=songs[currentSong];music.play()});
