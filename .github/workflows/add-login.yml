@@ -1,0 +1,46 @@
+name: Add romantic login screen
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  add-login:
+    if: github.event.head_commit.message != 'Add romantic login screen to index'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add login screen to index.html
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = 'romantic-login-overlay'
+          if marker in s:
+              raise SystemExit(0)
+          css = '''<style id="romantic-login-style">html.romantic-locked,html.romantic-locked body{overflow:hidden!important}#romantic-login-overlay{position:fixed;inset:0;z-index:999999;background:radial-gradient(circle at 50% 35%,rgba(120,35,75,.35),rgba(5,5,8,.97) 68%);display:flex;align-items:center;justify-content:center;padding:24px;opacity:1;transition:opacity 1s ease,visibility 1s ease;overflow:hidden}#romantic-login-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}.romantic-login-card{position:relative;width:min(520px,94vw);padding:52px 28px 42px;text-align:center;color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:30px;background:rgba(15,15,18,.72);box-shadow:0 25px 80px rgba(0,0,0,.55);backdrop-filter:blur(12px);animation:romanticCardIn 1.2s ease}.romantic-login-heart{font-size:54px;margin-bottom:8px;animation:romanticPulse 2s ease-in-out infinite}.romantic-login-card h1{font-size:48px;letter-spacing:2px;margin:0 0 12px;font-weight:400}.romantic-login-card p{font-size:18px;line-height:1.6;color:#eee;margin:8px 0 24px}.romantic-login-hint{font-size:15px!important;color:#bbb!important;margin-bottom:14px!important}.romantic-login-input{width:100%;padding:16px 18px;border:1px solid rgba(255,255,255,.35);border-radius:16px;background:rgba(255,255,255,.08);color:#fff;text-align:center;font:20px Georgia,serif;outline:none;letter-spacing:2px}.romantic-login-input:focus{border-color:rgba(255,255,255,.8);box-shadow:0 0 20px rgba(255,105,157,.16)}.romantic-login-button{margin-top:18px;width:100%;padding:15px 22px;border:1px solid rgba(255,255,255,.65);border-radius:30px;background:rgba(255,255,255,.05);color:#fff;font:18px Georgia,serif;cursor:pointer;transition:.3s}.romantic-login-button:hover{background:#fff;color:#111}.romantic-login-error{min-height:24px;margin:12px 0 0!important;color:#ff9fbd!important;font-size:15px!important}.romantic-floating-heart{position:absolute;bottom:-60px;color:#ff6b9d;pointer-events:none;animation:romanticFloat linear forwards}.romantic-success{animation:romanticSuccess .9s ease}.romantic-login-card.shake{animation:romanticShake .45s ease}@keyframes romanticCardIn{from{opacity:0;transform:translateY(25px) scale(.96)}to{opacity:1;transform:none}}@keyframes romanticPulse{50%{transform:scale(1.12)}}@keyframes romanticFloat{from{transform:translateY(0) rotate(0deg);opacity:0}15%{opacity:.8}to{transform:translateY(-110vh) rotate(20deg);opacity:0}}@keyframes romanticSuccess{from{transform:scale(1)}50%{transform:scale(1.05)}to{transform:scale(1)}}@keyframes romanticShake{25%{transform:translateX(-7px)}50%{transform:translateX(7px)}75%{transform:translateX(-5px)}to{transform:none}}@media(max-width:600px){.romantic-login-card{padding:42px 20px 34px;border-radius:24px}.romantic-login-card h1{font-size:38px}.romantic-login-card p{font-size:17px}.romantic-login-heart{font-size:46px}}</style>'''
+          overlay = '''<div id="romantic-login-overlay"><div class="romantic-login-card" id="romantic-login-card"><div class="romantic-login-heart">❤️</div><h1>Wspólna droga</h1><p>Nasza historia zaczęła się od jednej wyjątkowej daty…</p><p class="romantic-login-hint">Podaj datę, od której zaczęła się nasza wspólna historia</p><input id="romantic-login-input" class="romantic-login-input" type="text" inputmode="numeric" maxlength="10" placeholder="DD.MM.RRRR" autocomplete="off"><button id="romantic-login-button" class="romantic-login-button" type="button">Otwórz naszą historię ❤️</button><p id="romantic-login-error" class="romantic-login-error"></p></div></div>'''
+          script = '''<script id="romantic-login-script">(function(){document.documentElement.classList.add('romantic-locked');const overlay=document.getElementById('romantic-login-overlay'),input=document.getElementById('romantic-login-input'),button=document.getElementById('romantic-login-button'),error=document.getElementById('romantic-login-error'),card=document.getElementById('romantic-login-card');function heart(){const h=document.createElement('span');h.className='romantic-floating-heart';h.textContent=Math.random()>.2?'♥':'♡';h.style.left=Math.random()*100+'%';h.style.fontSize=(20+Math.random()*32)+'px';h.style.animationDuration=(5+Math.random()*5)+'s';overlay.appendChild(h);setTimeout(function(){h.remove()},11000)}const timer=setInterval(heart,450);function unlock(){if(input.value.trim()!=='14.02.2020'){error.textContent='To nie ta data… spróbuj jeszcze raz ❤️';card.classList.remove('shake');void card.offsetWidth;card.classList.add('shake');return}clearInterval(timer);error.textContent='';card.classList.add('romantic-success');button.textContent='Nasza historia ❤️';setTimeout(function(){overlay.classList.add('hidden');document.documentElement.classList.remove('romantic-locked');setTimeout(function(){overlay.remove()},1100)},700)}input.addEventListener('input',function(){let v=input.value.replace(/\\D/g,'').slice(0,8);if(v.length>2)v=v.slice(0,2)+'.'+v.slice(2);if(v.length>5)v=v.slice(0,5)+'.'+v.slice(5);input.value=v});button.addEventListener('click',unlock);input.addEventListener('keydown',function(e){if(e.key==='Enter')unlock()});setTimeout(function(){input.focus()},500)})();</script>'''
+          s = s.replace('</head>', css + '</head>', 1)
+          s = s.replace('<body>', '<body><script>document.documentElement.classList.add("romantic-locked")</script>' + overlay, 1)
+          s = s.replace('</body>', script + '</body>', 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit login screen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Add romantic login screen to index"
+          git push
+      - name: Remove one-shot workflow
+        run: |
+          git rm .github/workflows/add-login.yml
+          git commit -m "Remove one-shot login workflow"
+          git push
